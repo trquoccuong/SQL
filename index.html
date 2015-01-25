@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+        <title>My Docs</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="./css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">My Docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#bao-cao-code-camp">Báo cáo Code Camp</a></li>
+        
+            <li><a href="#mot-so-luu-y">Một số lưu ý</a></li>
+        
+            <li><a href="#goi-y-cac-buoc-lam">Gợi ý các bước làm</a></li>
+        
+            <li><a href="#mo-ta-phuong-phap-xu-ly-chung">Mô tả phương pháp xử lý chung</a></li>
+        
+            <li><a href="#cac-bang-quan-he">Các bảng quan hệ</a></li>
+        
+            <li><a href="#mo-ta-co-so-du-lieu">Mô tả cơ sở dữ liệu</a></li>
+        
+            <li><a href="#su-dung-sql-generete">Sử dụng SQL generete</a></li>
+        
+            <li><a href="#nhap-lieu">Nhập liệu</a></li>
+        
+            <li><a href="#mot-so-buoc-truy-suat-bang-lenh-select">Một số bước truy suất bằng lệnh "Select"</a></li>
+        
+            <li><a href="#nguoi-lam">Người Làm !</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="bao-cao-code-camp">Báo cáo Code Camp</h1>
+<hr />
+<p>Hãy thiết kế CSDL quan hệ trên Postgresql để mô hình hoá đủ các thông tin cần thiết để xây dựng web site, web service cung cấp thông tin dạng REST cho ứng dụng di động hiển thị:</p>
+<ol>
+<li>Danh mục phân loại chủng loại hàng chung: [Quần áo – thời trang, Đồ chơi, Thực phẩm – đồ uống, Đồ gia dụng, Điện tử gia dụng, Di động – tablet, Máy tính – linh kiện – mạng]</li>
+<li>Danh mục phân loại chủng loại hàng chi tiết: [Quần áo – thời trang: Nam, Nữ, Trẻ con], [Đồ chơi: bé trai, gái, thiếu nhi], [Thực phẩm – đồ uống: ….]…3. </li>
+<li>
+<p>Do có nhiều mặt hàng cùng một loại, có nhiều tính chất chung nhau như:
+Tivi các hãng sẽ có thuộc tính: [công nghệ: LED, Plasma, OLED], [màn hình: phẳng, cong], [smart: có kết nối Internet, không], [cổng giao tiếp: HDMI, USB, DNA, Bluetooth, Ethernet, Wifi] Xe máy sẽ có thuộc tính: [loại động cơ: 4 thì, 2 thì], [chuyển động: ga, số, côn tay], [dung tích: xy lanh], [màu sơn: …],….
+Tất cả các mặt hàng đều có một số thuộc tính chung: Tên, mã SKU (mã để quản lý trong kho: Stock Keeping Unit, phải là duy nhất để gán mã vạch), mô tả chi tiết, nhà sản xuất, công ty phân phối, ngày sản xuất, thời gian bảo hành, hạn sử dụng, giá gốc nhập, giá bán hiện tại, bảo hành ~ hạn sử dụng.
+Cần thiết kế hệ thống bảng để lưu được thông tin chung của mặt hàng và các thông tin đặc thù từng loại mặt hàng.
+Các hàng cùng loại có thể so sánh được với nhau. Ví dụ khách hàng muốn so sánh xe Airblade 2014 với Exciter 150.
+Cùng loại mặt hàng rõ ràng, nhưng khác một tính chất như màu sắc thì khác giá tiền. Lúc này phải tách ra thành các mã SKU độc lập. Ví dụ iPhone 6 có dung lượng khác nhau: 16G, 32G, 64G. Hoặc Exciter 150 có các màu sơn, tem khác nhau…</p>
+</li>
+<li>
+<p>Nhà sản xuất (khác với nhà phân phối): Honda, Yamaha, Nike, Adidas, Apple, Microsoft, Sony, LG, Samsung….
+Nên thiết kế một bảng riêng.
+Ở mỗi phân loại chủng loại hàng chung, thường có danh mục các hãng sản xuất phù hợp. Ví dụ: mục quần áo – thời trang nên có Nike, Adidas, Northface… nhưng có thể không có Apple, Microsoft, Sony, LG, Samsung.</p>
+</li>
+<li>
+<p>Ứng dụng có một text box để search. Trong scope của code camp này, giả sử người dùng chỉ tìm kiếm theo tên sản phẩm. Thực tế người dùng sẽ gõ từ khoá tìm kiếm phức tạp dị hơn nhiều. Do đó không thể xài SQL query để truy vấn được đâu.</p>
+</li>
+</ol>
+<h3 id="mot-so-luu-y">Một số lưu ý</h3>
+<hr />
+<ol>
+<li>Không phải thuộc tính nào (column) cũng phải có. Sẽ có nhiều thuộc tính là null.</li>
+<li>Phải thiết kế hệ thống bảng – quan hệ đủ mềm dẻo để việc bảo trì, chỉnh sửa cấu trúc bảng là thấp nhất. Trong Postgresql 9.4 có kiểu dữ liệu JSONB giúp record có thể lưu động các loại thông tin không cần tuân thủ cấu trúc cột (column) cổ điển.</li>
+<li>Do đề tài codecamp phức tạp, nên hai học viên sẽ cùng làm một bài. Techmaster sẽ cử một lập trình CSDL để trả lời các câu hỏi của các bạn qua chat.</li>
+<li>Tham khảo tuyển tập các loại Database schema cho nhiều ngành ở đây <a href="http://www.databaseanswers.org/data_models/">http://www.databaseanswers.org/data_models/</a></li>
+<li>Nên bắt đầu làm càng sớm tốt. Làm trước 1-2 ngày sẽ không kịp đâu.</li>
+<li>Lịch code camp ngày 25/1/2015 tại số 14 ngõ 4, Nguyễn Đình Chiểu. Thực hành ở phòng lab tầng 1 và tầng 4. Đủ chỗ cho anh em.</li>
+</ol>
+<h3 id="goi-y-cac-buoc-lam">Gợi ý các bước làm</h3>
+<hr />
+<ol>
+<li>Thu thập tập dữ liệu mẫu từ các web site thương mại điện tử nổi tiếng để học hỏi họ tổ chức thông tin như thế nào?</li>
+<li>Vẽ khối lương các bảng đừng quan tâm các trường (cột) chi tiết vội. Chỉ cần xác định được khoá chính (<code>primary key</code>) là ok rồi.</li>
+<li>Hình dung quan hệ phù hợp giữa các bảng: 1-1, kế thừa, một – nhiều, nhiều – nhiều.</li>
+<li>Cùng bàn bạc với đồng đội sẽ có chỗ nào chưa ổn.</li>
+<li>Tạo bảng trên Postgresql viết ra một file schema.sql để còn nộp bài. Mỗi lần sửa thì sửa trên schema.sql sau đó lưu lại. Nhớ DROP TABLE trước CREATE TABLE</li>
+<li>Tạo dữ liệu mẫu, viết vào một file data.sql. Nên tạo nhiều record đa dạng để sớm phát hiện sai sót, bất cập trong thiết kể bảng. Nhớ nguyên tắc Fail Fast khi làm sản phẩm không các men.</li>
+<li>Đặt nhiều câu hỏi dạng : What – If, nếu – thì để xem cấu trúc CSDL có bền không. Chỉnh lại schema.sql và data.sql cho đến khi các dữ liệu – quan hệ phù hợp.</li>
+<li>Viết báo cáo bằng MkDocs</li>
+</ol>
+<h3 id="mo-ta-phuong-phap-xu-ly-chung">Mô tả phương pháp xử lý chung</h3>
+<hr />
+<p>EAV hay là thiết kế cho mỗi chủng loại sản phẩm một bảng riêng hay cho thuộc tính đặc thù vào trường jsonb</p>
+<pre><code>EAV là 1 kiểu khái niệm liên quan đến chuẩn hóa cơ sở dữ liệu. Về mặt khái niệm bạn có thể hiểu nó như sau:
+   1. Theo cách tổ chức cơ sở dữ liệu đơn giản trong 1 table duy nhất cho các products theo kiểu table gồm các columns như product_id, và các product attributes, mỗi product sẽ có giá trị các attribute được lưu trong 1 row, nếu các products có thêm attributes thì phải sửa lại schema của database, thêm columns cho table.
+   2. Theo cách tổ chức của mô hình EAV sẽ có ít nhất 2 tables: e.g. table 1 để định nghĩa attribute (e.g. gồm các columns như attribute_id, attribute_name, attribute_type...) và table 2 để lưu giá trị của các attribute cho từng product entity (e.g. gồm các columns như entity_id, attribute_id, attribute_value...). Khi đó giá trị các attribute của 1 entity sẽ được lưu trên nhiều row thay vì 1 row trong mô hình trên, và khi thêm 1 attribute mới, thay vì phải thêm column tức là phải thay đổi schema của database, thì chỉ cần thêm 1 row định nghĩa cho attribute mới trong table 1 và thêm các row trong table 2 chứa các giá trị của attribute mới của từng entity.
+</code></pre>
+<h3 id="cac-bang-quan-he">Các bảng quan hệ</h3>
+<hr />
+<p><img alt="Data" src=".//img/data.png" /></p>
+<h3 id="mo-ta-co-so-du-lieu">Mô tả cơ sở dữ liệu</h3>
+<hr />
+<h3 id="su-dung-sql-generete">Sử dụng SQL generete</h3>
+<pre><code>CREATE TABLE Product_indetify (sku  SERIAL NOT NULL, price int4, instock int4, PRIMARY KEY (sku));
+
+CREATE TABLE Catagories (idCatagory  SERIAL NOT NULL, name varchar(100), CatagoriesidCatagory int4 NOT NULL, PRIMARY KEY (idCatagory));
+
+CREATE TABLE Detail_product (Productidproduct int4 NOT NULL, Attribute_valuestringAttributeidatrribute int4, Attribute_valuestringvaluestringidvalue int4, Product_indetifysku int4 NOT NULL);
+
+CREATE TABLE Attribute_valuestring (Attributeidatrribute int4 NOT NULL, valuestringidvalue int4 NOT NULL, PRIMARY KEY (Attributeidatrribute, valuestringidvalue));
+
+CREATE TABLE Product_Attribute (Productidproduct int4 NOT NULL, Attributeidatrribute int4 NOT NULL, PRIMARY KEY (Productidproduct, Attributeidatrribute));
+
+CREATE TABLE Product_valuestring (Productidproduct int4 NOT NULL, valuestringidvalue int4 NOT NULL, PRIMARY KEY (Productidproduct, valuestringidvalue));
+
+CREATE TABLE valuestring (idvalue  SERIAL NOT NULL, valueString varchar(100), valuestringidvalue int4 NOT NULL, PRIMARY KEY (idvalue));
+
+CREATE TABLE Attribute (idatrribute  SERIAL NOT NULL, atribute_name varchar(100), Attributeidatrribute int4 NOT NULL, PRIMARY KEY (idatrribute));
+
+CREATE TABLE Product (idproduct  SERIAL NOT NULL, name varchar(100), CatagoriesidCatagory int4 NOT NULL, PRIMARY KEY (idproduct));
+
+ALTER TABLE valuestring ADD CONSTRAINT FKvaluestrin994189 FOREIGN KEY (valuestringidvalue) REFERENCES valuestring (idvalue);
+
+ALTER TABLE Catagories ADD CONSTRAINT FKCatagories892759 FOREIGN KEY (CatagoriesidCatagory) REFERENCES Catagories (idCatagory);
+
+ALTER TABLE Attribute ADD CONSTRAINT FKAttribute885698 FOREIGN KEY (Attributeidatrribute) REFERENCES Attribute (idatrribute);
+
+ALTER TABLE Product ADD CONSTRAINT FKProduct864776 FOREIGN KEY (CatagoriesidCatagory) REFERENCES Catagories (idCatagory);
+
+ALTER TABLE Detail_product ADD CONSTRAINT FKDetail_pro606548 FOREIGN KEY (Attribute_valuestringAttributeidatrribute, Attribute_valuestringvaluestringidvalue) REFERENCES Attribute_valuestring (Attributeidatrribute, valuestringidvalue);
+
+ALTER TABLE Detail_product ADD CONSTRAINT FKDetail_pro587398 FOREIGN KEY (Productidproduct) REFERENCES Product (idproduct);
+
+ALTER TABLE Attribute_valuestring ADD CONSTRAINT FKAttribute_882171 FOREIGN KEY (valuestringidvalue) REFERENCES valuestring (idvalue);
+
+ALTER TABLE Attribute_valuestring ADD CONSTRAINT FKAttribute_235125 FOREIGN KEY (Attributeidatrribute) REFERENCES Attribute (idatrribute);
+
+ALTER TABLE Product_Attribute ADD CONSTRAINT FKProduct_At28042 FOREIGN KEY (Productidproduct) REFERENCES Product (idproduct);
+
+ALTER TABLE Product_Attribute ADD CONSTRAINT FKProduct_At428733 FOREIGN KEY (Attributeidatrribute) REFERENCES Attribute (idatrribute);
+
+ALTER TABLE Product_valuestring ADD CONSTRAINT FKProduct_va501627 FOREIGN KEY (valuestringidvalue) REFERENCES valuestring (idvalue);
+
+ALTER TABLE Product_valuestring ADD CONSTRAINT FKProduct_va366141 FOREIGN KEY (Productidproduct) REFERENCES Product (idproduct);
+
+ALTER TABLE Detail_product ADD CONSTRAINT FKDetail_pro89586 FOREIGN KEY (Product_indetifysku) REFERENCES Product_indetify (sku);
+
+</code></pre>
+
+<h3 id="nhap-lieu">Nhập liệu</h3>
+<hr />
+<pre><code>Vì khối dữ liệu nhập vào để test khá lớn nên code bên dưới chỉ mô phỏng câu lệnh nhập liệu 
+</code></pre>
+
+<h4 id="nhap-du-lieu-bang-catagories">Nhập dữ liệu bảng "catagories"</h4>
+<pre><code>INSERT INTO catagories(
+            idcatagory, name, catagoriesidcatagory)
+    VALUES 
+        (1, 'Cellphone and Tablet',1),
+        (2, 'Electronics',2),
+         ....... ;
+
+</code></pre>
+
+<h4 id="nhap-lieu-bang-product">Nhập liệu bảng "product"</h4>
+<pre><code>INSERT INTO product(
+            idproduct, name, catagoriesidcatagory)
+    VALUES 
+        (1, 'Galaxy S5', 5),
+        (2, 'Iphone 6', 5),
+          ....... ;
+
+</code></pre>
+
+<h4 id="nhap-lieu-bang-attribute">Nhập liệu bảng "attribute"</h4>
+<pre><code>INSERT INTO attribute(
+            idatrribute, atribute_name, attributeidatrribute)
+    VALUES 
+        (1,'network',1),
+        (2,'body',2),
+          ....... ;
+
+</code></pre>
+
+<h4 id="nhap-lieu-bang-valuestring">Nhập liệu bảng "valuestring"</h4>
+<pre><code>INSERT INTO valuestring(
+            idvalue, valuestring, valuestringidvalue)
+    VALUES 
+        (1, 'GSM / HSPA / LTE', 1),
+        (2, 'GSM 850 / 900 / 1800 / 1900', 2),
+          .......   ;
+
+</code></pre>
+
+<h4 id="nhap-lieu-bang-product_attribute">Nhập liệu bảng "product_attribute"</h4>
+<pre><code>INSERT INTO product_attribute(
+            productidproduct, attributeidatrribute)
+    VALUES 
+        (3, 7),
+        (3, 8),
+        .... ;
+
+</code></pre>
+
+<h3 id="mot-so-buoc-truy-suat-bang-lenh-select">Một số bước truy suất bằng lệnh "Select"</h3>
+<hr />
+<h4 id="lay-ra-ten-san-pham-theo-ma-sku">Lấy ra tên sản phẩm theo mã SKU</h4>
+<pre><code>SELECT   Product_indetify.sku as sku, product.name as name 
+   FROM  Product,Product_indetify,Detail_product
+   WHERE Detail_product.Product_indetifysku = Product_indetify.sku AND
+   Product.idproduct = Detail_product.Productidproduct
+   GROUP BY name,sku;
+
+</code></pre>
+
+<hr />
+<p><img alt="sosanh" src=".//img/sku-name.png" />    </p>
+<h4 id="lay-ra-ten-san-pham-va-thuoc-tinh-tuong-ung-cua-no-qua-ma-sku">Lấy ra tên sản phẩm và thuộc tính tương ứng của nó qua mã SKU</h4>
+<pre><code>SELECT Product_indetify.sku as sku, product.name as name , Attribute.atribute_name as atr , valueString.valueString as vs  FROM Product,Product_indetify,Detail_product , valuestring ,Attribute
+WHERE Detail_product.Product_indetifysku = Product_indetify.sku AND Product_indetify.sku = 45135 AND
+Product.idproduct = Detail_product.Productidproduct AND Detail_product.Attribute_valuestringAttributeidatrribute = Attribute.idatrribute AND Detail_product.Attribute_valuestringvaluestringidvalue = valuestring.idvalue 
+GROUP BY name,sku , vs , atr;
+
+</code></pre>
+
+<hr />
+<p><img alt="ma-ten" src=".//img/name-thuoc-tinh.png" /></p>
+<h4 id="so-sanh-hai-san-pham-theo-ten">So sánh hai sản phẩm theo tên</h4>
+<pre><code>SELECT T1.atr, T1.iphone6,T2.galaxys5
+FROM 
+(SELECT Attribute.atribute_name as atr , valueString.valueString as iphone6 FROM Product,Product_indetify,Detail_product , valuestring ,Attribute
+WHERE Detail_product.Product_indetifysku = Product_indetify.sku AND Product_indetify.sku = 45135  AND
+Product.idproduct = Detail_product.Productidproduct AND Detail_product.Attribute_valuestringAttributeidatrribute = Attribute.idatrribute AND Detail_product.Attribute_valuestringvaluestringidvalue = valuestring.idvalue 
+GROUP BY  atr,iphone6) T1
+
+INNER JOIN
+
+(SELECT  valueString.valueString as galaxys5 , Attribute.atribute_name as atr FROM Product,Product_indetify,Detail_product , valuestring ,Attribute
+WHERE Detail_product.Product_indetifysku = Product_indetify.sku AND Product_indetify.sku = 33324  AND
+Product.idproduct = Detail_product.Productidproduct AND Detail_product.Attribute_valuestringAttributeidatrribute = Attribute.idatrribute AND Detail_product.Attribute_valuestringvaluestringidvalue = valuestring.idvalue 
+GROUP BY  atr,galaxys5) T2
+ON 
+    T1.atr = T2.atr;
+
+
+</code></pre>
+
+<hr />
+<p><img alt="sosanh" src=".//img/so-sanh.png" /> </p>
+<h3 id="nguoi-lam">Người Làm !</h3>
+<ul>
+<li>Nhóm Cường - Phong lớp IOS 27 <a href="http://techmaster.vn/">Techmatter</a></li>
+</ul>
+</div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/prettify-1.0.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script src="./js/base.js"></script>
+    </body>
+</html>
