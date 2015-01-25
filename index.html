@@ -70,6 +70,8 @@
         
             <li><a href="#mot-so-buoc-truy-suat-bang-lenh-select">Một số bước truy suất bằng lệnh "Select"</a></li>
         
+            <li><a href="#nhan-xet-them-va-huong-mo-rong">Nhận xét thêm và hướng mở rộng</a></li>
+        
             <li><a href="#nguoi-lam">Người Làm !</a></li>
         
     
@@ -249,6 +251,14 @@ ALTER TABLE Detail_product ADD CONSTRAINT FKDetail_pro89586 FOREIGN KEY (Product
 
 <hr />
 <p><img alt="sosanh" src=".//img/sku-name.png" />    </p>
+<h4 id="tim-tat-ca-san-pham-theo-thu-muc">Tìm tất cả sản phẩm theo thư mục</h4>
+<hr />
+<pre><code>SELECT c1.name, c2.name , p.name FROM catagories AS c1 , catagories AS c2 , product AS p
+WHERE p.catagoriesidcatagory = c2.idcatagory AND c1.idcatagory = c2.catagoriesidcatagory ;
+
+</code></pre>
+
+<p><img alt="ma-ten" src=".//img/danhmuc.png" /></p>
 <h4 id="lay-ra-ten-san-pham-va-thuoc-tinh-tuong-ung-cua-no-qua-ma-sku">Lấy ra tên sản phẩm và thuộc tính tương ứng của nó qua mã SKU</h4>
 <pre><code>SELECT Product_indetify.sku as sku, product.name as name , Attribute.atribute_name as atr , valueString.valueString as vs  FROM Product,Product_indetify,Detail_product , valuestring ,Attribute
 WHERE Detail_product.Product_indetifysku = Product_indetify.sku AND Product_indetify.sku = 45135 AND
@@ -281,6 +291,18 @@ ON
 
 <hr />
 <p><img alt="sosanh" src=".//img/so-sanh.png" /> </p>
+<h3 id="nhan-xet-them-va-huong-mo-rong">Nhận xét thêm và hướng mở rộng</h3>
+<hr />
+<p>Sơ đồ liên kết giữa các bảng có nhiều liên kết lí do : </p>
+<ul>
+<li>Phân chia việc nhập đơn lẻ cho nhiều bản để tăng tính năng động của cấu trúc khi có sự thay đổi do yêu cầu của sản phẩm : ví dụ tăng thuộc tính cho sản phẩm , tăng thêm giá trị cho môt thuộc tính của một sản phẩm ! </li>
+<li>
+<p>Giảm tri phí tìm kiếm theo một giá trị hoặc một thuộc tính để có thể truy xuất ra sản phẩm yêu cầu hoặc thuận lợi trong việc so sánh !</p>
+</li>
+<li>
+<p>Trong dự án này nhóm đã chia các mục ít phải sủa đổi ra làm các đối tượng riêng như catagories hay product_identify , việc này giúp cho dễ dàng tìm kiếm dữ liệu theo thư mục hoặc theo mã sản phẩm.</p>
+</li>
+</ul>
 <h3 id="nguoi-lam">Người Làm !</h3>
 <ul>
 <li>Nhóm Cường - Phong lớp IOS 27 <a href="http://techmaster.vn/">Techmatter</a></li>
